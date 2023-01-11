@@ -19,6 +19,9 @@ local cfg = {
   setopt = false,
   order = "FSNs",
   fancy_fold = false,
+  foldopen = nil,
+  foldclose = nil,
+  foldsep = nil,
 }
 
 --- Store defined signs without whitespace.
@@ -103,10 +106,11 @@ local function get_fold_segement(opts)
 
   local foldopen = opts.foldopen or "-"
   local foldclose = opts.foldclose or "+"
+  local foldsep = opts.foldsep or " "
 
   if opts.fancy_fold then
     return '%@v:lua.ScFa@%{foldlevel(v:lnum) > 0 ? (foldlevel(v:lnum) > foldlevel(v:lnum - 1) ? (foldclosed(v:lnum) == -1 ? "'
-        .. foldopen .. '" : "' .. foldclose .. '") : " ") : " " }%T'
+        .. foldopen .. '" : "' .. foldclose .. '") : "' .. foldsep .. '") : "' .. foldsep .. '" }%T'
   end
   -- default.
   return "%@v:lua.ScFa@%C%T"
