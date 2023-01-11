@@ -147,6 +147,8 @@ function M.setup(user)
         else
           stc = stc .. "%@v:lua.ScLa@%{v:lua.ScSp()}%T"
         end
+      elseif segment == "w" then
+        stc = stc .. " "
       end
     end
 
